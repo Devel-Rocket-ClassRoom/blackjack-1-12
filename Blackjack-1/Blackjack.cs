@@ -25,19 +25,25 @@ class Program
             dealer.Drawcard();
             dealer.Drawcard();
 
-            while (player.TotalScore < 21)
-            {
-                dealer.ShowAllCards(isFirstRound: true);
-                player.ShowAllCards();
-                player.ShowScore();
 
-                Console.Write("\n H(Hit) 또는 S(Stand)를 선택하세요: ");
+            dealer.ShowAllCards(isFirstRound: true);
+            player.ShowAllCards();
+            player.ShowScore();
+
+            while (player.TotalScore < 21)
+                {
+                    while (dealer.TotalScore < 17)
+                    {
+                        dealer.Drawcard();
+                    }
+                    Console.Write("\n H(Hit) 또는 S(Stand)를 선택하세요: ");
                 string choice = Console.ReadLine().ToUpper();
 
                 if (choice == "H")
                 {
                     player.Drawcard();
                     player.ShowLastCard();
+                    player.ShowScore();
                 }
                 else if (choice == "S")
                 {

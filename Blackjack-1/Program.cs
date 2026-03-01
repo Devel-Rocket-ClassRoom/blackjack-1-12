@@ -7,6 +7,7 @@ class Blackjack
     private static bool isDealerStop = false;
     private string name;
     private int cardCount = 0;
+    private static Random random = new Random();
     private int[] cardshape = new int[11];
     private int[] cardnumber = new int[11];
 
@@ -41,16 +42,9 @@ class Blackjack
                 score -= 10;
                 Acount--;
             }
-
-            if (name == "딜러" && score >= 17)
-            {
-                isDealerStop = true;
-            }
             return score;
-
         }
     }
-
     public Blackjack(string name)
     {
         this.name = name;
@@ -68,7 +62,6 @@ class Blackjack
 
     public void Drawcard()
     {
-        Random random = new Random();
         while (true)
         {
             int shape = random.Next(0, 4);
