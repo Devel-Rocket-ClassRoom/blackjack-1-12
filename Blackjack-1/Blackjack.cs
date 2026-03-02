@@ -39,8 +39,19 @@ class Program
                 dealer.ShowAllCards();
                 dealer.ShowScore();
 
+                if (dealer.TotalScore == 21)
+                {
+                    Console.WriteLine("딜러도 블랙잭! 무승부입니다.");
+                }
+                else
+                {
+                    Console.WriteLine("플레이어 블랙잭 승리!");
+                }
+
                 roundOver = true;
             }
+
+            
 
             while (!roundOver && player.TotalScore < 21)
             {
@@ -64,11 +75,13 @@ class Program
             {
                 Console.WriteLine("\n=== 딜러의 차례 ===");
                 dealer.ShowAllCards();
+                dealer.ShowScore();
 
                 while (dealer.TotalScore < 17)
                 {
                     dealer.Drawcard();
                     dealer.ShowLastCard();
+                    dealer.ShowAllCards();
                     dealer.ShowScore();
                 }
             }
